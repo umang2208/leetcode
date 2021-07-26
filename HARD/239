@@ -24,8 +24,7 @@ public:
             //check size of k size window is completed or not if it competes then delete elemnts index from queue
             while(!q.empty() and q.front()<=i-k){
                 q.pop_front();
-            }
-            
+            }            
             //check is there was new max element in dqueue or nor if yes then replace index of new max elemnt index///
             while(!q.empty() and nums[q.back()]<=nums[i]){
                 q.pop_back();
