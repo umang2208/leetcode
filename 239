@@ -1,0 +1,39 @@
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        // if k==1 all the elements are max in his window 
+        if(k==1) return nums;
+        int n=nums.size();
+        vector<int> v;
+        int num;
+        //intialize a doublu ended queie which is useful for delete indexes from both ends 
+        deque<int> q;
+        int i=0;
+        //intialize loop for k times and store max elements index in dqueue
+        for( i=0;i<k;i++){
+            //using while loop for verifying that max element index at the rear in a dqueue
+            while(!q.empty() and nums[i]>=nums[q.back()]){
+                q.pop_back();
+            }
+            q.push_back(i);
+            }
+        //continue loop for  remainig window
+        for(;i<n;i++){
+            //insert elements from rear end of queue into vector
+            v.push_back(nums[q.front()]);
+            //check size of k size window is completed or not if it competes then delete elemnts index from queue
+            while(!q.empty() and q.front()<=i-k){
+                q.pop_front();
+            }
+            //check is there was new max element in dqueue or nor if yes then replace insex of new max elemnt index///
+            while(!q.empty() and nums[q.back()]<=nums[i]){
+                q.pop_back();
+            }
+            q.push_back(i);
+        }
+        //insert last remaing element into vector
+         v.push_back(nums[q.front()]);
+      return v;
+       
+    }
+};
