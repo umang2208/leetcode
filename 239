@@ -26,7 +26,7 @@ public:
                 q.pop_front();
             }
             
-            //check is there was new max element in dqueue or nor if yes then replace insex of new max elemnt index///
+            //check is there was new max element in dqueue or nor if yes then replace index of new max elemnt index///
             while(!q.empty() and nums[q.back()]<=nums[i]){
                 q.pop_back();
             }
